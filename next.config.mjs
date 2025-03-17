@@ -7,9 +7,9 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
-  assetPrefix: "./",
-  output: "export", // 🔹 Enables static export for GitHub Pages
+  output: "export", // ✅ Enables static export for GitHub Pages
+  assetPrefix: process.env.NODE_ENV === "production" ? "/personal-portfolio/" : "",  // ✅ Corrected assetPrefix
+  basePath: process.env.NODE_ENV === "production" ? "/personal-portfolio" : "",      // ✅ Added basePath
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -24,7 +24,7 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-  trailingSlash: true, // 🔹 Required for GitHub Pages routing
+  trailingSlash: true, // ✅ Required for GitHub Pages routing
 };
 
 mergeConfig(nextConfig, userConfig);
@@ -50,5 +50,3 @@ function mergeConfig(nextConfig, userConfig) {
 }
 
 export default nextConfig;
-
-
