@@ -7,6 +7,8 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  assetPrefix: "./",
   output: "export", // 🔹 Enables static export for GitHub Pages
   eslint: {
     ignoreDuringBuilds: true,
@@ -48,3 +50,5 @@ function mergeConfig(nextConfig, userConfig) {
 }
 
 export default nextConfig;
+
+
